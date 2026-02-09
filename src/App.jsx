@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Financials from './pages/Financials';
 import StaffPerformance from './pages/StaffPerformance';
 import Risks from './pages/Risks';
+import Privacy from './pages/Privacy';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="financial" element={<Financials />} />
           <Route path="staff" element={<StaffPerformance />} />
           <Route path="risks" element={<Risks />} />
+          <Route path="privacy" element={<Privacy />} />
         </Route>
       </Routes>
     </Router>

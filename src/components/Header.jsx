@@ -1,15 +1,51 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, LogIn, Menu, X, ChevronDown } from 'lucide-react';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const navigate = useNavigate();
 
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
     const closeMenu = () => setIsMenuOpen(false);
 
+    const handleDropdownClick = (to, itemId) => {
+        navigate(to);
+        setTimeout(() => {
+            const element = document.getElementById(itemId);
+            if (element) {
+                const headerHeight = 120; // Account for fixed header height
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+        setActiveDropdown(null);
+    };
+
     // Dropdown Data
+
+    
+    const privacyList = [
+        { id: "background", label: "1. Background and Rationale" },
+        { id: "objectives", label: "2. Project Objectives" },
+        { id: "scope", label: "3. Scope of the Project" },
+        { id: "deliverables", label: "4. Key Deliverables" },
+        { id: "stakeholders", label: "5. Stakeholders" },
+        { id: "constraints-risks", label: "6. Constraints and Risks" },
+        { id: "standards-policies", label: "7. Applicable Standards and Policies" },
+        { id: "success-criteria", label: "8. Success Criteria" },
+        { id: "timeline-events", label: "9. Timeline Progress Events" },
+        { id: "change-control", label: "10. Change Control Process" },
+        { id: "continuous-improvement", label: "11. Continuous Improvement Opportunities" },
+        { id: "project-closure", label: "12. Project Closure Requirements" },
+        { id: "project-authorization", label: "13. Project Authorization" }
+    ];
     const financialList = [
         { id: "budget-overview", label: "1. Budget Overview" },
         { id: "resource-allocation", label: "2. Resource Allocations" },
@@ -33,9 +69,11 @@ const Header = () => {
         { id: "recordkeeping", label: "8. Documentation & Retention" }
     ];
 
+
     // Navigation Links
     const navLinks = [
         { to: "/", label: "Home" },
+        { to: "/privacy", label: "Policies", dropdownId: "privacy", items: privacyList },
         { to: "/financial", label: "Financial & Resources", dropdownId: "financial", items: financialList },
         { to: "/staff", label: "Staff Performance", dropdownId: "staff", items: staffList },
         { to: "/risks", label: "Risk Management Framework", dropdownId: "risks", items: risksList }
@@ -98,22 +136,27 @@ const Header = () => {
                                                 overflowY: 'auto'
                                             }}>
                                                 {link.items.map(item => (
-                                                    <a
-                                                        href={`${link.to}#${item.id}`}
+                                                    <button
+                                                        onClick={() => handleDropdownClick(link.to, item.id)}
                                                         key={item.id}
                                                         className="dropdown-item"
                                                         style={{
                                                             display: 'block',
+                                                            width: '100%',
                                                             padding: '0.75rem 1rem',
                                                             color: '#14532d', // Dark green text
                                                             textDecoration: 'none',
                                                             fontSize: '0.9rem',
                                                             borderBottom: '1px solid #f0fdf4',
-                                                            transition: 'background 0.2s ease'
+                                                            transition: 'background 0.2s ease',
+                                                            background: 'none',
+                                                            border: 'none',
+                                                            textAlign: 'left',
+                                                            cursor: 'pointer'
                                                         }}
                                                     >
                                                         {item.label}
-                                                    </a>
+                                                    </button>
                                                 ))}
                                             </div>
                                         </div>
@@ -184,14 +227,25 @@ const Header = () => {
                                 {link.dropdownId && (
                                     <div style={{ paddingLeft: '1rem', marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                                         {link.items.map(item => (
-                                            <a
+                                            <button
                                                 key={item.id}
-                                                href={`${link.to}#${item.id}`}
-                                                onClick={closeMenu}
-                                                style={{ fontSize: '0.95rem', color: '#15803d', textDecoration: 'none' }}
+                                                onClick={() => {
+                                                    handleDropdownClick(link.to, item.id);
+                                                    closeMenu();
+                                                }}
+                                                style={{ 
+                                                    fontSize: '0.95rem', 
+                                                    color: '#15803d', 
+                                                    textDecoration: 'none',
+                                                    background: 'none',
+                                                    border: 'none',
+                                                    textAlign: 'left',
+                                                    cursor: 'pointer',
+                                                    padding: 0
+                                                }}
                                             >
                                                 {item.label}
-                                            </a>
+                                            </button>
                                         ))}
                                     </div>
                                 )}
