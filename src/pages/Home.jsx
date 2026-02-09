@@ -120,6 +120,84 @@ const Home = () => {
 
             <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', marginTop: '-40px', position: 'relative', zIndex: 10 }}>
 
+                {/* 1. BACKGROUND AND RATIONALE */}
+                <CharterSection id="background" title="1. Background and Rationale" icon={Briefcase}>
+                    <div style={{ marginBottom: '1.5rem' }}>
+                        <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#374151', marginBottom: '1rem' }}>
+                            <strong style={{ color: '#14532d' }}>FreshHarvest Foods</strong> is a medium-sized food distribution company supplying fresh produce to supermarkets and restaurants. Currently, inventory is tracked manually using spreadsheets and paper logs, leading to:
+                        </p>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+                            {[
+                                "Stock discrepancies",
+                                "Overstocking issues", 
+                                "Food spoilage",
+                                "Delays in order fulfillment"
+                            ].map((issue, i) => (
+                                <div key={i} style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.75rem',
+                                    padding: '0.75rem',
+                                    background: '#fef2f2',
+                                    borderRadius: '8px',
+                                    border: '1px solid #fee2e2'
+                                }}>
+                                    <AlertTriangle size={16} color="#dc2626" />
+                                    <span style={{ fontSize: '0.9rem', color: '#991b1b', fontWeight: '500' }}>{issue}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    
+                    <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '12px', border: '1px solid #dcfce7' }}>
+                        <h4 style={{ fontSize: '1rem', fontWeight: '700', color: '#14532d', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                            <Target size={18} color="#16a34a" />
+                            SIMS Implementation Objectives
+                        </h4>
+                        <div style={{ display: 'grid', gap: '0.75rem' }}>
+                            {[
+                                "Automate stock tracking and reporting",
+                                "Reduce food waste and stock errors", 
+                                "Improve compliance with food safety regulations",
+                                "Generate real-time analytics for inventory decisions"
+                            ].map((objective, i) => (
+                                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                                    <div style={{
+                                        width: '20px',
+                                        height: '20px',
+                                        borderRadius: '50%',
+                                        background: '#16a34a',
+                                        color: '#fff',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '0.7rem',
+                                        fontWeight: '700',
+                                        flexShrink: 0,
+                                        marginTop: '2px'
+                                    }}>
+                                        {i + 1}
+                                    </div>
+                                    <span style={{ fontSize: '0.95rem', color: '#166534', lineHeight: '1.5' }}>{objective}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <div style={{ 
+                            marginTop: '1rem', 
+                            padding: '1rem', 
+                            background: '#fff', 
+                            borderRadius: '8px', 
+                            border: '1px solid #bbf7d0',
+                            fontSize: '0.9rem',
+                            color: '#14532d',
+                            fontWeight: '500',
+                            textAlign: 'center'
+                        }}>
+                            The project will allow FreshHarvest to streamline processes, improve operational efficiency, and ensure high-quality service delivery to clients.
+                        </div>
+                    </div>
+                </CharterSection>
+
                 {/* 2. OBJECTIVES */}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
                     <CharterSection id="objectives" title="2. Comprehensive Objectives" icon={Target}>
