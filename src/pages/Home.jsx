@@ -62,138 +62,129 @@ const Home = () => {
     return (
         <div style={{ background: '#f8fafc', minHeight: '100vh', fontFamily: 'Inter, sans-serif', paddingBottom: '100px' }}>
 
-            {/* HERO / EXECUTIVE SUMMARY */}
+            {/* NEW HERO - BACKGROUND & RATIONALE UI */}
             <section style={{
-                background: '#f0fdf4', // Light Green
-                color: '#14532d', // Dark Green
-                padding: '80px 0 100px',
+                background: '#f0fdf4', // Light Green shade
+                color: '#14532d',
+                padding: '40px 0 120px',
                 position: 'relative',
                 overflow: 'hidden'
             }}>
+                {/* Modern UI Background Elements */}
                 <div style={{
                     position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: '60%',
-                    height: '100%',
-                    background: 'radial-gradient(circle at center, rgba(34, 197, 94, 0.1) 0%, transparent 70%)',
+                    top: '-20%',
+                    right: '-10%',
+                    width: '600px',
+                    height: '600px',
+                    background: 'radial-gradient(circle, rgba(22, 163, 74, 0.1) 0%, transparent 70%)',
+                    borderRadius: '50%'
+                }}></div>
+                <div style={{
+                    position: 'absolute',
+                    bottom: '-10%',
+                    left: '-5%',
+                    width: '400px',
+                    height: '400px',
+                    background: 'radial-gradient(circle, rgba(34, 197, 94, 0.1) 0%, transparent 70%)',
+                    borderRadius: '50%'
                 }}></div>
 
                 <div className="container" style={{ position: 'relative', zIndex: 1, maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', background: '#fff', padding: '0.5rem 1.5rem', borderRadius: '99px', marginBottom: '2rem', border: '1px solid #bbf7d0', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-                        <LayoutDashboard size={18} className="text-emerald-400" color="#16a34a" />
-                        <span style={{ fontSize: '0.85rem', fontWeight: '700', letterSpacing: '0.05em', color: '#15803d', textTransform: 'uppercase' }}>PROJECT CHARTER & DASHBOARD</span>
-                    </div>
-
-                    <h1 style={{ fontSize: '3.5rem', fontWeight: '900', marginBottom: '1.5rem', lineHeight: '1.1', color: '#14532d' }}>
-                        Smart Inventory <br />
-                        <span style={{ color: '#16a34a' }}>Management System (SIMS)</span>
-                    </h1>
-
-                    <div style={{ maxWidth: '800px', marginBottom: '3rem' }}>
-                        <p style={{ fontSize: '1.25rem', color: '#166534', lineHeight: '1.6', marginBottom: '1.5rem' }}>
-                            <strong style={{ color: '#14532d' }}>Executive Summary:</strong> FreshHarvest Foods faces critical operational risks due to manual inventory tracking.
-                            The SIMS project is a strategic initiative to digitize operations, automate reporting, and protect our <strong style={{ color: '#14532d' }}>AUD $15M</strong> annual turnover.
-                        </p>
-                    </div>
-
-                    {/* Quick Stats Grid */}
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
-                        {[
-                            { label: "Budget", value: "$100,000", sub: "Fixed Allocation", icon: DollarSign, color: "#16a34a" },
-                            { label: "Timeline", value: "4 Months", sub: "Hard Deadline", icon: Activity, color: "#d97706" },
-                            { label: "Target", value: "98%", sub: "Data Accuracy", icon: Target, color: "#2563eb" },
-                            { label: "Scope", value: "Full Rollout", sub: "Cloud-Based", icon: Maximize, color: "#db2777" }
-                        ].map((stat, i) => (
-                            <div key={i} style={{ background: '#fff', padding: '1.5rem', borderRadius: '16px', border: '1px solid #dcfce7', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-                                    <stat.icon size={20} color={stat.color} />
-                                    <span style={{ color: '#64748b', fontSize: '0.9rem', fontWeight: '600' }}>{stat.label}</span>
-                                </div>
-                                <div style={{ fontSize: '1.8rem', fontWeight: '800', color: '#1e293b', marginBottom: '0.25rem' }}>{stat.value}</div>
-                                <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{stat.sub}</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '4rem', alignItems: 'center' }}>
+                        <div>
+                            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+                                <Briefcase size={18} color="#16a34a" />
+                                <span style={{ fontSize: '0.9rem', fontWeight: '800', color: '#16a34a', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Background and Rationale</span>
                             </div>
-                        ))}
+                            <h1 style={{ fontSize: '3.8rem', fontWeight: '900', marginBottom: '1.5rem', lineHeight: '1.1', color: '#14532d', letterSpacing: '-0.02em' }}>
+                                Digitalizing <br />
+                                <span style={{ color: '#16a34a' }}>Fresh Harvest Foods</span>
+                            </h1>
+                            <p style={{ fontSize: '1.15rem', color: '#166534', lineHeight: '1.7', marginBottom: '2.5rem', maxWidth: '650px' }}>
+                                Fresh Harvest Foods is a medium-sized food distribution company supplying fresh produce to supermarkets and restaurants. Currently, inventory is tracked manually using spreadsheets and paper logs, leading to <strong>stock discrepancies, overstocking, spoilage, and delays in order fulfilment.</strong>
+                            </p>
+
+                            <div style={{ display: 'flex', gap: '1rem' }}>
+                                <button
+                                    onClick={() => document.getElementById('background')?.scrollIntoView({ behavior: 'smooth' })}
+                                    style={{ background: '#16a34a', color: '#fff', padding: '1rem 2rem', borderRadius: '12px', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
+                                >
+                                    Learn More <ArrowRight size={20} />
+                                </button>
+                                <button
+                                    onClick={() => document.getElementById('objectives')?.scrollIntoView({ behavior: 'smooth' })}
+                                    style={{ background: '#fff', color: '#16a34a', padding: '1rem 2rem', borderRadius: '12px', border: '1px solid #bbf7d0', fontWeight: '700', fontSize: '1rem', cursor: 'pointer' }}
+                                >
+                                    View Objectives
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* UI Mockup Card */}
+                        <div style={{
+                            background: '#fff',
+                            borderRadius: '24px',
+                            border: '1px solid #dcfce7',
+                            padding: '2rem',
+                            boxShadow: '0 25px 50px -12px rgba(20, 83, 45, 0.1)'
+                        }}>
+                            <h3 style={{ color: '#14532d', fontSize: '1.1rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                <AlertTriangle size={20} color="#dc2626" />
+                                Critical Inefficiencies
+                            </h3>
+                            <div style={{ display: 'grid', gap: '1rem' }}>
+                                {[
+                                    { label: "Stock Discrepancies", val: "High Risk", color: "#dc2626" },
+                                    { label: "Spoilage Rate", val: "12% Over", color: "#d97706" },
+                                    { label: "Manual Errors", val: "Critical", color: "#dc2626" },
+                                    { label: "Order Delays", val: "Increasing", color: "#d97706" }
+                                ].map((item, i) => (
+                                    <div key={i} style={{ background: '#f8fafc', padding: '1rem', borderRadius: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #f1f5f9' }}>
+                                        <span style={{ color: '#64748b', fontSize: '0.9rem' }}>{item.label}</span>
+                                        <span style={{ color: item.color, fontWeight: '700', fontSize: '0.8rem', textTransform: 'uppercase' }}>{item.val}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
-            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', marginTop: '-40px', position: 'relative', zIndex: 10 }}>
+            <div className="container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', marginTop: '-60px', position: 'relative', zIndex: 10 }}>
 
-                {/* 1. BACKGROUND AND RATIONALE */}
-                <CharterSection id="background" title="1. Background and Rationale" icon={Briefcase}>
-                    <div style={{ marginBottom: '1.5rem' }}>
-                        <p style={{ fontSize: '1.05rem', lineHeight: '1.7', color: '#374151', marginBottom: '1rem' }}>
-                            <strong style={{ color: '#14532d' }}>FreshHarvest Foods</strong> is a medium-sized food distribution company supplying fresh produce to supermarkets and restaurants. Currently, inventory is tracked manually using spreadsheets and paper logs, leading to:
-                        </p>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+                {/* 1. EXECUTIVE SUMMARY (FORMER HERO) */}
+                <CharterSection id="background" title="Executive Summary: SIMS Project" icon={LayoutDashboard}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+                        <div>
+                            <p style={{ fontSize: '1.1rem', color: '#1e293b', marginBottom: '1.5rem', lineHeight: '1.7' }}>
+                                The <strong>Smart Inventory Management System (SIMS)</strong> is a strategic initiative to digitize operations, automate reporting, and protect our <strong style={{ color: '#14532d' }}>AUD $15M</strong> annual turnover.
+                            </p>
+                            <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '16px', border: '1px solid #dcfce7' }}>
+                                <h4 style={{ color: '#14532d', marginBottom: '1rem' }}>Core Objectives</h4>
+                                <ul style={{ paddingLeft: '1.25rem', color: '#166534', fontSize: '0.95rem' }}>
+                                    <li>Automate stock tracking and reporting</li>
+                                    <li>Reduce food waste and stock errors</li>
+                                    <li>Improve compliance and safety</li>
+                                    <li>Real-time analytics for decisions</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Stats Grid */}
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
                             {[
-                                "Stock discrepancies",
-                                "Overstocking issues", 
-                                "Food spoilage",
-                                "Delays in order fulfillment"
-                            ].map((issue, i) => (
-                                <div key={i} style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '0.75rem',
-                                    padding: '0.75rem',
-                                    background: '#fef2f2',
-                                    borderRadius: '8px',
-                                    border: '1px solid #fee2e2'
-                                }}>
-                                    <AlertTriangle size={16} color="#dc2626" />
-                                    <span style={{ fontSize: '0.9rem', color: '#991b1b', fontWeight: '500' }}>{issue}</span>
+                                { label: "Budget", value: "$100,000", icon: DollarSign, color: "#16a34a" },
+                                { label: "Timeline", value: "4 Months", icon: Activity, color: "#d97706" },
+                                { label: "Target", value: "98%", icon: Target, color: "#2563eb" },
+                                { label: "Scope", value: "Full Rollout", icon: Maximize, color: "#db2777" }
+                            ].map((stat, i) => (
+                                <div key={i} style={{ background: '#fff', padding: '1.25rem', borderRadius: '16px', border: '1px solid #e2e8f0', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+                                    <stat.icon size={18} color={stat.color} style={{ marginBottom: '0.5rem' }} />
+                                    <div style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: '600' }}>{stat.label}</div>
+                                    <div style={{ fontSize: '1.25rem', fontWeight: '800', color: '#0f172a' }}>{stat.value}</div>
                                 </div>
                             ))}
-                        </div>
-                    </div>
-                    
-                    <div style={{ background: '#f0fdf4', padding: '1.5rem', borderRadius: '12px', border: '1px solid #dcfce7' }}>
-                        <h4 style={{ fontSize: '1rem', fontWeight: '700', color: '#14532d', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            <Target size={18} color="#16a34a" />
-                            SIMS Implementation Objectives
-                        </h4>
-                        <div style={{ display: 'grid', gap: '0.75rem' }}>
-                            {[
-                                "Automate stock tracking and reporting",
-                                "Reduce food waste and stock errors", 
-                                "Improve compliance with food safety regulations",
-                                "Generate real-time analytics for inventory decisions"
-                            ].map((objective, i) => (
-                                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-                                    <div style={{
-                                        width: '20px',
-                                        height: '20px',
-                                        borderRadius: '50%',
-                                        background: '#16a34a',
-                                        color: '#fff',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        fontSize: '0.7rem',
-                                        fontWeight: '700',
-                                        flexShrink: 0,
-                                        marginTop: '2px'
-                                    }}>
-                                        {i + 1}
-                                    </div>
-                                    <span style={{ fontSize: '0.95rem', color: '#166534', lineHeight: '1.5' }}>{objective}</span>
-                                </div>
-                            ))}
-                        </div>
-                        <div style={{ 
-                            marginTop: '1rem', 
-                            padding: '1rem', 
-                            background: '#fff', 
-                            borderRadius: '8px', 
-                            border: '1px solid #bbf7d0',
-                            fontSize: '0.9rem',
-                            color: '#14532d',
-                            fontWeight: '500',
-                            textAlign: 'center'
-                        }}>
-                            The project will allow FreshHarvest to streamline processes, improve operational efficiency, and ensure high-quality service delivery to clients.
                         </div>
                     </div>
                 </CharterSection>
@@ -362,7 +353,7 @@ const Home = () => {
                     h1 { font-size: 2.5rem !important; }
                 }
             `}</style>
-        </div>
+        </div >
     );
 };
 
